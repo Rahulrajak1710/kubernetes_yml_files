@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mynode-app  # Unique key of the Deployment instance
+spec:
+  replicas: 5  # 5 Pods should exist at all times
+  selector:
+    matchLabels:
+      app: app
+  template:
+    metadata:
+      labels:
+        app: app  # Apply this label to pods and default the Deployment label selector to this value
+    spec:
+      containers:
+      - name: app
+        image: rahulrajak/kubernetes-autohealing:latest  # Run this image
